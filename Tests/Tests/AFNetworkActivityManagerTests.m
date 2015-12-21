@@ -97,7 +97,7 @@
      parameters:nil
      progress:nil
      success:nil
-     failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+     failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error, id _Nullable responseObject) {
          [requestExpectation fulfill];
      }];
     [self waitForExpectationsWithCommonTimeoutUsingHandler:nil];

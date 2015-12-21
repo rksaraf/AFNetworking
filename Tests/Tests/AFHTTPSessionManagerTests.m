@@ -185,7 +185,7 @@
                parameters:@{@"key":@"value"}
                progress:nil
                success:nil
-               failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+               failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error, id _Nullable responseObject) {
                    XCTAssertNil(task);
                    [expectation fulfill];
                }];
@@ -308,7 +308,7 @@
      parameters:nil
      progress:nil
      success:nil
-     failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+     failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error, id _Nullable responseObject) {
          [expectation fulfill];
      }];
     [self waitForExpectationsWithCommonTimeoutUsingHandler:nil];
@@ -502,7 +502,7 @@
      progress:nil
      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
          [expectation fulfill];
-     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error, id _Nullable responseObject) {
          XCTFail(@"Request should succeed");
          [expectation fulfill];
      }];
@@ -526,7 +526,7 @@
          XCTFail(@"Request should fail");
          [expectation fulfill];
      }
-     failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+     failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error, id _Nullable responseObject) {
          XCTAssertEqualObjects(error.domain, NSURLErrorDomain);
          XCTAssertEqual(error.code, NSURLErrorServerCertificateUntrusted);
          [expectation fulfill];
